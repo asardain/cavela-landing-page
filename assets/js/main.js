@@ -36,11 +36,11 @@
 
 					// Images (in the format of 'url': 'alignment').
 						images: {
-							'images/bg04_long_small.jpg': 'center',
-							'images/bg06_long_small.jpg': 'center',
-							'images/bg08_long_small.jpg': 'center',
-							'images/bg09_long_small.jpg': 'center',
-							'images/bg07_long_small.jpg': 'center',
+							'images/bg04_long.jpg': 'center',
+							'images/bg06.jpg': 'center',
+							'images/bg08.jpg': 'center',
+							'images/bg09.jpg': 'center',
+							'images/bg07.jpg': 'center',
 
 						},
 
@@ -138,7 +138,56 @@
 				};
 
 			// Events.
-			// Note: If you're *not* using AJAX, get rid of the event listener below (DONE).
+			// Note: If you're *not* using AJAX, get rid of this event listener.
+				$form.addEventListener('submit', function(event) {
+
+					event.stopPropagation();
+					event.preventDefault();
+
+					// Hide message.
+						$message._hide();
+
+					// Disable submit.
+						$submit.disabled = true;
+
+					// Extract form data (email).
+						var formData = {
+							email: $form.querySelector('[name="email"]').value
+						};
+
+					// Process form.
+					// Note: Doesn't actually do anything yet (other than report back with a "thank you"),
+					// but there's enough here to piece together a working AJAX submission call that does.
+						$.ajax({
+							method: 'POST',
+							url: 'https://formsubmit.co/ajax/9d05f96d29ab1e0733085a92fcac5409',
+							dataType: 'json',
+							accepts: 'application/json',
+							data: formData,
+							success: function(data) {
+								console.log(data);
+		
+								// Reset form.
+								$form.reset();
+		
+								// Enable submit.
+								$submit.disabled = false;
+		
+								// Show success message.
+								$message._show('success', 'Thank you! You have joined the waitlist.');
+							},
+							error: function(err) {
+								console.log(err);
+		
+								// Enable submit.
+								$submit.disabled = false;
+		
+								// Show failure message.
+								$message._show('failure', 'Something went wrong. Please try again.');
+							}
+						});
+
+				});
 
 		})();
 
