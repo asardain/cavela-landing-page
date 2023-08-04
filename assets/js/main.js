@@ -36,11 +36,11 @@
 
 					// Images (in the format of 'url': 'alignment').
 						images: {
-							'images/bg04_long.jpg': 'center',
-							'images/bg06.jpg': 'center',
-							'images/bg08.jpg': 'center',
-							'images/bg09.jpg': 'center',
-							'images/bg07.jpg': 'center',
+							'images/bg04_long_small.jpg': 'center',
+							'images/bg06_long_small.jpg': 'center',
+							'images/bg08_long_small.jpg': 'center',
+							'images/bg09_long_small.jpg': 'center',
+							'images/bg07_long_small.jpg': 'center',
 
 						},
 
